@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux'
 
 const ProtectedRoutes = () => {
 
-    const {isLoggedIn} = useSelector(state => state.user)
-    console.log("From protected routes", isLoggedIn)
+    const {isLoggedIn, user} = useSelector(state => state.user)
+    console.log("From protected routes", isLoggedIn, user)
   return (
-    isLoggedIn ? <Outlet /> : <Navigate to="/login" />
+    isLoggedIn ? <Outlet user={user} /> : <Navigate to="/login" />
   )
 }
 
